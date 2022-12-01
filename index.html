@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
+  <script async src="scripts/index.js"></script>
   <link rel="stylesheet" href="./page/index.css">
 </head>
 
@@ -23,7 +24,10 @@
     <section class="profile">
       <div class="profile__avatar"></div>
       <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто<button class="profile__edit-button"></button></h1>
+        <div class="profile__wrapper">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button"></button>
+        </div>
         <p class="profile__work">Исследователь океана</p>
       </div>
       <button class="profile__add-button"></button>
@@ -69,7 +73,7 @@
       <div class="element">
         <img src="./images/photo-card-karachaevsk.jpg" alt="" class="element__image">
         <div class="element__wrapper">
-          <h2 class="element__title">Карачаевск</h2>
+          <h2 class="element__title">Карачаево-Черкессия</h2>
           <button type="button" class="element__like"></button>
         </div>
       </div>
@@ -84,11 +88,12 @@
   <!-- Pop-up -->
   <div class="popup">
     <div class="popup__container">
-      <form class="popup__form">
+      <form action="#" class="popup__form">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" placeholder="Жак-Ив Кусто" class="popup__input">
-        <input type="text" placeholder="Исследователь океана" class="popup__input">
-        <button type="button" class="popup__save-button">Сохранить</button>
+        <input name="name" type="text" placeholder="Ваше имя" class="popup__input popup__input_place_name">
+        <input name="about" type="text" placeholder="Дополнительная информация"
+          class="popup__input popup__input_place_about">
+        <button type="submit" class="popup__save-button">Сохранить</button>
       </form>
       <button type="button" class="popup__close-button"></button>
     </div>

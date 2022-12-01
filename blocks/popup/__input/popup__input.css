@@ -9,3 +9,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.popup__input:focus {
+  outline: none;
+}
