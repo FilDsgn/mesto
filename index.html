@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <script async src="scripts/index.js"></script>
   <link rel="stylesheet" href="./page/index.css">
 </head>
 
@@ -26,57 +25,57 @@
       <div class="profile__info">
         <div class="profile__wrapper">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button"></button>
+          <button type="button" aria-label="Редактировать профиль" class="profile__edit-button"></button>
         </div>
         <p class="profile__work">Исследователь океана</p>
       </div>
-      <button class="profile__add-button"></button>
+      <button type="button" aria-label="Добавть карточку" class="profile__add-button"></button>
     </section>
 
     <!-- Elements -->
     <section class="elements">
-      <div class="element">
+      <article class="element">
         <img src="./images/photo-card-karachaevsk.jpg" alt="Заброшенная церковь в горах" class="element__image">
         <div class="element__wrapper">
           <h2 class="element__title">Карачаевск</h2>
-          <button type="button" class="element__like"></button>
+          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img src="./images/photo-card-elbrus.jpg" alt="Горы на закате" class="element__image">
         <div class="element__wrapper">
           <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" class="element__like"></button>
+          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img src="./images/photo-card-dombai.jpg" alt="Лес и снежные горы" class="element__image">
         <div class="element__wrapper">
           <h2 class="element__title">Домбай</h2>
-          <button type="button" class="element__like"></button>
+          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img src="./images/photo-card-elbrus.jpg" alt="Горы на закате" class="element__image">
         <div class="element__wrapper">
           <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" class="element__like"></button>
+          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img src="./images/photo-card-dombai.jpg" alt="Лес и снежные горы" class="element__image">
         <div class="element__wrapper">
           <h2 class="element__title">Домбай</h2>
-          <button type="button" class="element__like"></button>
+          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img src="./images/photo-card-karachaevsk.jpg" alt="Заброшенная церковь в горах" class="element__image">
         <div class="element__wrapper">
           <h2 class="element__title">Карачаево-Черкессия</h2>
-          <button type="button" class="element__like"></button>
+          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
         </div>
-      </div>
+      </article>
     </section>
   </main>
 
@@ -88,16 +87,18 @@
   <!-- Pop-up -->
   <div class="popup">
     <div class="popup__container">
-      <form action="#" class="popup__form">
+      <form action="#" name="profile-form" class="popup__form">
         <h2 class="popup__title">Редактировать профиль</h2>
         <input name="name" type="text" placeholder="Ваше имя" class="popup__input popup__input_place_name">
         <input name="about" type="text" placeholder="Дополнительная информация"
           class="popup__input popup__input_place_about">
-        <button type="submit" class="popup__save-button">Сохранить</button>
+        <button type="submit" aria-label="Сохранить" class="popup__save-button">Сохранить</button>
       </form>
       <button type="button" class="popup__close-button"></button>
     </div>
   </div>
+
+  <script async src="scripts/index.js"></script>
 </body>
 
 </html>
