@@ -10,6 +10,7 @@
   font-size: 18px;
   font-weight: 400;
   transition: .3s;
+  border-radius: 2px;
 }
 
 .popup__save-button:hover {
