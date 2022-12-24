@@ -34,48 +34,16 @@
 
     <!-- Elements -->
     <section aria-label="Карточки с фотографиями и названиями мест" class="elements">
-      <article class="element">
-        <img src="./images/photo-card-karachaevsk.jpg" alt="Заброшенная церковь в горах" class="element__image">
-        <div class="element__wrapper">
-          <h2 class="element__title">Карачаевск</h2>
-          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img src="./images/photo-card-elbrus.jpg" alt="Горы на закате" class="element__image">
-        <div class="element__wrapper">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img src="./images/photo-card-dombai.jpg" alt="Лес и снежные горы" class="element__image">
-        <div class="element__wrapper">
-          <h2 class="element__title">Домбай</h2>
-          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img src="./images/photo-card-elbrus.jpg" alt="Горы на закате" class="element__image">
-        <div class="element__wrapper">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img src="./images/photo-card-dombai.jpg" alt="Лес и снежные горы" class="element__image">
-        <div class="element__wrapper">
-          <h2 class="element__title">Домбай</h2>
-          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img src="./images/photo-card-karachaevsk.jpg" alt="Заброшенная церковь в горах" class="element__image">
-        <div class="element__wrapper">
-          <h2 class="element__title">Карачаево-Черкессия</h2>
-          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
-        </div>
-      </article>
+      <template id="card-item-template">
+        <article class="element">
+          <button type="button" aria-label="Удалить" class="element__delete"></button>
+          <img src="" alt="" class="element__image">
+          <div class="element__wrapper">
+            <h2 class="element__title"></h2>
+            <button type="button" aria-label="Поставить лайк" class="element__like"></button>
+          </div>
+        </article>
+      </template>
     </section>
   </main>
 
@@ -84,8 +52,8 @@
     <p class="footer__copyright">&#64; 2022, Александр Филимонов</p>
   </footer>
 
-  <!-- Pop-up -->
-  <div class="popup">
+  <!-- Pop-up profile-->
+  <div class="popup popup_content_profile">
     <div class="popup__container">
       <form action="#" name="profile-form" class="popup__form">
         <h2 class="popup__title">Редактировать профиль</h2>
@@ -94,6 +62,30 @@
           class="popup__input popup__input_place_about">
         <button type="submit" aria-label="Сохранить" class="popup__save-button">Сохранить</button>
       </form>
+      <button type="button" class="popup__close-button"></button>
+    </div>
+  </div>
+
+  <!-- Pop-up card-->
+  <div class="popup popup_content_card">
+    <div class="popup__container">
+      <form action="#" name="profile-form" class="popup__form">
+        <h2 class="popup__title">Новое место</h2>
+        <input name="name" type="text" placeholder="Название" class="popup__input popup__input_place_locate">
+        <input name="about" type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_place_image">
+        <button type="submit" aria-label="Сохранить" class="popup__save-button">Сохранить</button>
+      </form>
+      <button type="button" class="popup__close-button"></button>
+    </div>
+  </div>
+
+  <!-- Pop-up image-->
+  <div class="popup popup_content_image">
+    <div class="popup__image-container">
+      <figure class="popup__figure">
+        <img src="" alt="" class="popup__image">
+        <figcaption class="popup__caption">Байкал</figcaption>
+      </figure>
       <button type="button" class="popup__close-button"></button>
     </div>
   </div>

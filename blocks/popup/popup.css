@@ -5,7 +5,10 @@
   top: 0;
   left: 0;
   bottom: 0;
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: .5s;
   justify-content: center;
   align-items: center;
 }
