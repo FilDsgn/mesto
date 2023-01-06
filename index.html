@@ -34,16 +34,18 @@
 
     <!-- Elements -->
     <section aria-label="Карточки с фотографиями и названиями мест" class="elements">
-      <template id="card-item-template">
-        <article class="element">
-          <button type="button" aria-label="Удалить" class="element__delete"></button>
-          <img src="#" alt="" class="element__image">
-          <div class="element__wrapper">
-            <h2 class="element__title"></h2>
-            <button type="button" aria-label="Поставить лайк" class="element__like"></button>
-          </div>
-        </article>
-      </template>
+      <div class="elements__container">
+        <template id="card-item-template">
+          <article class="element">
+            <button type="button" aria-label="Удалить" class="element__delete"></button>
+            <img src="#" alt="" class="element__image">
+            <div class="element__wrapper">
+              <h2 class="element__title"></h2>
+              <button type="button" aria-label="Поставить лайк" class="element__like"></button>
+            </div>
+          </article>
+        </template>
+      </div>
     </section>
   </main>
 

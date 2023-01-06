@@ -22,7 +22,7 @@ const formElement = document.querySelector('.popup__form');
 const nameInput = formElement.querySelector('.popup__input_place_name');
 const jobInput = formElement.querySelector('.popup__input_place_about');
 const templateCards = document.querySelector('#card-item-template');
-const cardsContainer = document.querySelector('.elements');
+const cardsContainer = document.querySelector('.elements__container');
 const cardsMesto = cardsContainer.querySelectorAll('.element');
 
 profileName.textContent = 'Жак-Ив Кусто';
