@@ -24,10 +24,10 @@
       <div class="profile__avatar"></div>
       <div class="profile__info">
         <div class="profile__wrapper">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button type="button" aria-label="Редактировать профиль" class="profile__edit-button"></button>
         </div>
-        <p class="profile__work">Исследователь океана</p>
+        <p class="profile__work"></p>
       </div>
       <button type="button" aria-label="Добавть карточку" class="profile__add-button"></button>
     </section>
@@ -55,12 +55,15 @@
   <!-- Pop-up profile-->
   <div class="popup popup_content_profile">
     <div class="popup__container">
-      <form action="#" name="profile-form" class="popup__form">
+      <form action="#" name="profile-form" class="popup__form" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input name="name" type="text" placeholder="Ваше имя" class="popup__input popup__input_place_name">
-        <input name="about" type="text" placeholder="Дополнительная информация"
-          class="popup__input popup__input_place_about">
-        <button type="submit" aria-label="Сохранить" class="popup__save-button">Сохранить</button>
+        <input name="name" type="text" placeholder="Ваше имя" minlength="2" maxlength="40" required id="username"
+          class="popup__input popup__input_place_name">
+        <span class="username-error popup__input-error"></span>
+        <input name="about" type="text" placeholder="Дополнительная информация" minlength="2" maxlength="200" required
+          id="about" class="popup__input popup__input_place_about">
+        <span class="about-error popup__input-error"></span>
+        <button type="submit" aria-label="Сохранить" class="popup__button">Сохранить</button>
       </form>
       <button type="button" class="popup__close-button"></button>
     </div>
@@ -69,11 +72,15 @@
   <!-- Pop-up card-->
   <div class="popup popup_content_card">
     <div class="popup__container">
-      <form action="#" name="profile-form" class="popup__form">
+      <form action="#" name="profile-form" class="popup__form" novalidate>
         <h2 class="popup__title">Новое место</h2>
-        <input name="name" type="text" placeholder="Название" class="popup__input popup__input_place_locate">
-        <input name="about" type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_place_image">
-        <button type="submit" aria-label="Сохранить" class="popup__save-button">Сохранить</button>
+        <input name="name" type="text" placeholder="Название" minlength="2" maxlength="30" required id="locate-name"
+          class="popup__input popup__input_place_locate">
+        <span class="locate-name-error popup__input-error"></span>
+        <input name="about" type="text" placeholder="Ссылка на картинку" id="image-link"
+          class="popup__input popup__input_place_image" required>
+        <span class="image-link-error popup__input-error"></span>
+        <button type="submit" aria-label="Сохранить" class="popup__button">Сохранить</button>
       </form>
       <button type="button" class="popup__close-button"></button>
     </div>
@@ -84,12 +91,13 @@
     <div class="popup__image-container">
       <figure class="popup__figure">
         <img src="#" alt="" class="popup__image">
-        <figcaption class="popup__caption">Байкал</figcaption>
+        <figcaption class="popup__caption"></figcaption>
       </figure>
       <button type="button" class="popup__close-button"></button>
     </div>
   </div>
 
+  <script async src="scripts/validate.js"></script>
   <script async src="scripts/index.js"></script>
 </body>
 

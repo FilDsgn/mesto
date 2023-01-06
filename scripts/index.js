@@ -1,12 +1,13 @@
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const popup = document.querySelector('.popup');
+const popups = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_content_profile');
 const popupAddCard = document.querySelector('.popup_content_card');
 const popupContainer = document.querySelector('.popup__container');
 const closeButton = document.querySelector('.popup__close-button');
 const closeButtons = document.querySelectorAll('.popup__close-button');
-const popupSaveButton = document.querySelector('.popup__save-button');
+const popupSaveButton = document.querySelector('.popup__button');
 const profileName = document.querySelector('.profile__name');
 const profileWork = document.querySelector('.profile__work');
 const popupOpenCard = document.querySelector('.popup_content_image');
@@ -24,20 +25,26 @@ const templateCards = document.querySelector('#card-item-template');
 const cardsContainer = document.querySelector('.elements');
 const cardsMesto = cardsContainer.querySelectorAll('.element');
 
+profileName.textContent = 'Жак-Ив Кусто';
+profileWork.textContent = 'Исследователь океана';
+
 // Открытие попапа
 function openPopup(popup) {
+  enableValidation(validationConfig);
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 // Закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
 }
 
 editButton.addEventListener('click', function() {
-  openPopup(popupEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileWork.textContent;
+  openPopup(popupEdit);
 });
 
 addButton.addEventListener('click', function() {
@@ -148,3 +155,22 @@ function addLike(evt) {
 function delCard(evt) {
   evt.target.closest('.element').remove();
 }
+
+
+// Закрытие попапов по нажатию на оверлей
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+          closePopup(popup);
+      }
+  })
+})
+
+// Закрытие попапов при нажатии на Escape
+function closePopupEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+
