@@ -50,16 +50,6 @@ function toggleButtonState(inputList, buttonElement, config) {
   }
 }
 
-// Проверка поля с картинкой на ввод адреса
-function checkImageUrl(formElement) {
-  const imageLinkInput = formElement.querySelector('#image-link');
-  if(!imageLinkInput.value.startsWith('http')) {
-    imageLinkInput.setCustomValidity('Введите адрес сайта');
-  } else {
-    imageLinkInput.setCustomValidity('');
-  }
-}
-
 function setEventListeners(formElement, config) {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
@@ -68,9 +58,9 @@ function setEventListeners(formElement, config) {
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      toggleButtonState(inputList, buttonElement, config);
+      
       checkInputValidity(formElement, inputElement, config);
-      checkImageUrl(formElement);
+      toggleButtonState(inputList, buttonElement, config);
     })
   })
 }
