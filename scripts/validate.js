@@ -58,6 +58,8 @@ function setEventListeners(formElement, config) {
   //   toggleButtonState(inputList, buttonElement, config);
   // }
 
+  toggleButtonState(inputList, buttonElement, config);
+
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       

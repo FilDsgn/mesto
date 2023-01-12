@@ -40,19 +40,19 @@ function closePopup(popup) {
 }
 
 // Скрыть ошибку
-// function hideInputError(formElement, inputElement, config) {
-//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+function hideInputError(formElement, inputElement, config) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
-//   errorElement.classList.remove(config.errorClass);
-//   errorElement.textContent = '';
-//   inputElement.classList.remove(config.inputErrorClass);
-// }
+  errorElement.classList.remove(config.errorClass);
+  errorElement.textContent = '';
+  inputElement.classList.remove(config.inputErrorClass);
+}
 
 // Открытие редактирования профиля
 function openEditProfile() {
-  // inputElementsEditProfile.forEach((inputElement) => {
-  //   hideInputError(formProfile, inputElement, validationConfig);
-  // })
+  inputElementsEditProfile.forEach((inputElement) => {
+    hideInputError(formProfile, inputElement, validationConfig);
+  })
 
   const buttonElement = formProfile.querySelector('.popup__button');
 
@@ -153,7 +153,6 @@ function disableSubmitButton(formElement, config) {
 
 
 buttonAddCard.addEventListener('click', function() {
-  disableSubmitButton(popupAddCard, validationConfig);
   openPopup(popupAddCard);
 })
 
