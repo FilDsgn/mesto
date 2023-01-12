@@ -24,6 +24,7 @@ const templateCards = document.querySelector('#card-item-template');
 const cardsContainer = document.querySelector('.elements__container');
 const cardsMesto = cardsContainer.querySelectorAll('.element');
 const templateCard = templateCards.content.querySelector('.element');
+const inputElementsEditProfile = formProfile.querySelectorAll('.popup__input');
 
 
 // Открытие попапа
@@ -38,11 +39,29 @@ function closePopup(popup) {
   document.removeEventListener('keydown', closePopupEsc);
 }
 
+// Скрыть ошибку
+// function hideInputError(formElement, inputElement, config) {
+//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
+//   errorElement.classList.remove(config.errorClass);
+//   errorElement.textContent = '';
+//   inputElement.classList.remove(config.inputErrorClass);
+// }
+
 // Открытие редактирования профиля
 function openEditProfile() {
+  // inputElementsEditProfile.forEach((inputElement) => {
+  //   hideInputError(formProfile, inputElement, validationConfig);
+  // })
+
+  const buttonElement = formProfile.querySelector('.popup__button');
+
+  buttonElement.classList.remove(validationConfig.inactiveButtonClass);
+  buttonElement.disabled = false;
+  
   nameInput.value = profileName.textContent;
   jobInput.value = profileWork.textContent;
-  setEventListeners(formProfile, validationConfig);
+  
   openPopup(popupEdit);
 }
 
@@ -124,11 +143,20 @@ function closePopupEsc(evt) {
   }
 }
 
+// Отключение кнопки попапа
+function disableSubmitButton(formElement, config) {
+    const buttonElement = formElement.querySelector('.popup__button');
+    buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.disabled = true;
+}
+
 
 
 buttonAddCard.addEventListener('click', function() {
+  disableSubmitButton(popupAddCard, validationConfig);
   openPopup(popupAddCard);
 })
+
 
 closeButtons.forEach((closeButton) => {
   closeButton.addEventListener('click', () => {
@@ -157,3 +185,5 @@ popups.forEach((popup) => {
 formProfile.addEventListener('submit', handleProfileFormSubmit);
 
 buttonEditProfile.addEventListener('click', openEditProfile);
+
+enableValidation(validationConfig);
