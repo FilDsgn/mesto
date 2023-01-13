@@ -25,6 +25,7 @@ const cardsContainer = document.querySelector('.elements__container');
 const cardsMesto = cardsContainer.querySelectorAll('.element');
 const templateCard = templateCards.content.querySelector('.element');
 const inputElementsEditProfile = formProfile.querySelectorAll('.popup__input');
+const profileFormSubmitButton = formProfile.querySelector('.popup__button');
 
 
 // Открытие попапа
@@ -54,10 +55,8 @@ function openEditProfile() {
     hideInputError(formProfile, inputElement, validationConfig);
   })
 
-  const buttonElement = formProfile.querySelector('.popup__button');
-
-  buttonElement.classList.remove(validationConfig.inactiveButtonClass);
-  buttonElement.disabled = false;
+  profileFormSubmitButton.classList.remove(validationConfig.inactiveButtonClass);
+  profileFormSubmitButton.disabled = false;
   
   nameInput.value = profileName.textContent;
   jobInput.value = profileWork.textContent;
@@ -121,8 +120,8 @@ const handleAddCard = (evt) => {
   evt.target.reset();
   
   closePopup(popupAddCard);
-  evt.submitter.disabled = true;
-  evt.submitter.classList.add(validationConfig.inactiveButtonClass);
+ 
+  disableSubmitButton(popupAddCard, validationConfig);
 }
 
 // Добавление лайков
