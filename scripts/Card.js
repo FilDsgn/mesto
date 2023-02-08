@@ -1,3 +1,5 @@
+import { handleImageClick } from '../utils/utils.js';
+
 class Card {
   constructor({ name, link }) {
     this._name = name;
@@ -39,6 +41,10 @@ class Card {
     const likeButton = this._newCard.querySelector('.element__like');
     likeButton.addEventListener('click', () => {
       this._likeCard();
+    })
+
+    this._newCard.querySelector('.element__image').addEventListener('click', () => {
+      handleImageClick(this._name, this._link);
     })
   }
   
