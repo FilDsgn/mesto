@@ -16,7 +16,6 @@ const formProfile = document.querySelector('.popup__form_profile');
 const nameInput = document.querySelector('.popup__input_place_name');
 const jobInput = document.querySelector('.popup__input_place_about');
 const cardsContainer = document.querySelector('.elements__container');
-const inputElementsEditProfile = formProfile.querySelectorAll('.popup__input');
 const profileFormSubmitButton = formProfile.querySelector('.popup__button');
 
 
@@ -79,6 +78,5 @@ export {
   nameInput,
   jobInput,
   cardsContainer,
-  inputElementsEditProfile,
   profileFormSubmitButton
  };

@@ -3,74 +3,84 @@ class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
+    this._buttonSubmit = this._formElement.querySelector(this._config.submitButtonSelector);
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
+
+    this._errorClass = this._config.errorClass;
+    this._inputErrorClass = this._config.inputErrorClass;
   }
 
-  // Показать ошибку
-  _showInputError(formElement, inputElement, config) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
-    errorElement.classList.add(config.errorClass);
-    errorElement.textContent = inputElement.validationMessage;
-    inputElement.classList.add(config.inputErrorClass);
+  // Показать ошибку
+  _showInputError(inputElement, errorMessage) {
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+
+    errorElement.classList.add(this._errorClass);
+    errorElement.textContent = errorMessage;
+    inputElement.classList.add(this._inputErrorClass);
   }
 
   // Скрыть ошибку
-  _hideInputError(formElement, inputElement, config) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  _hideInputError(inputElement) {
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
 
-    errorElement.classList.remove(config.errorClass);
+    errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
-    inputElement.classList.remove(config.inputErrorClass);
+    inputElement.classList.remove(this._inputErrorClass);
   }
 
   // Проверка валидности
-  _checkInputValidity(formElement, inputElement, config) {
+  _checkInputValidity(inputElement) {
     if (inputElement.validity.valid) {
-      this._hideInputError(formElement, inputElement, config);
+      this._hideInputError(inputElement);
     } else {
-      this._showInputError(formElement, inputElement, config);
+      this._showInputError(inputElement, inputElement.validationMessage);
     }
   }
 
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => !inputElement.validity.valid);
+  _hasInvalidInput() {
+    return this._inputList.some((inputElement) => !inputElement.validity.valid);
   }
 
   // Переключение состояний кнопки
-  _toggleButtonState(inputList, buttonElement, config) {
-    if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(config.inactiveButtonClass);
-      buttonElement.disabled = true;
+  _toggleButtonState() {
+    if (this._hasInvalidInput()) {
+      this._buttonSubmit.classList.add(this._config.inactiveButtonClass);
+      this._buttonSubmit.disabled = true;
     } else {
-      buttonElement.classList.remove(config.inactiveButtonClass);
-      buttonElement.disabled = false;
+      this._buttonSubmit.classList.remove(this._config.inactiveButtonClass);
+      this._buttonSubmit.disabled = false;
     }
   }
 
-  _setEventListeners(formElement, config) {
-    const inputList = Array.from(formElement.querySelectorAll(this._config.inputSelector));
-    const buttonElement = formElement.querySelector(this._config.submitButtonSelector);
+  _setEventListeners() {
+    this._toggleButtonState();
 
-    this._toggleButtonState(inputList, buttonElement, this._config);
-
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         
-        this._checkInputValidity(formElement, inputElement, config);
-        this._toggleButtonState(inputList, buttonElement, config);
+        this._checkInputValidity(inputElement);
+        this._toggleButtonState();
       })
     })
   }
 
-  enableValidation() {
-    const formList = Array.from(document.querySelectorAll(this._config.formSelector));
+ // Скрыть ошибку
+ resetValidation() {
+  this._inputList.forEach((inputElement) => {
+    this._hideInputError(inputElement)
+  })
+  this._toggleButtonState()
+}
 
-    formList.forEach((formElement) => {
-      this._setEventListeners(formElement, this._config);
-    })
+  enableValidation() {
+    this._setEventListeners();
   }
+
+ 
 }
 
 export default FormValidator;
+
 
 

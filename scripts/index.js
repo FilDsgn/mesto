@@ -1,3 +1,4 @@
+import { initialCards } from './cards.js';
 
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
@@ -20,25 +21,14 @@ import {
   nameInput,
   jobInput,
   cardsContainer,
-  inputElementsEditProfile,
   profileFormSubmitButton
  } from '../utils/utils.js';
 
-
-// Скрыть ошибку
-function hideInputError(formElement, inputElement, config) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-  errorElement.classList.remove(config.errorClass);
-  errorElement.textContent = '';
-  inputElement.classList.remove(config.inputErrorClass);
-}
+ 
 
 // Открытие редактирования профиля
 function openEditProfile() {
-  inputElementsEditProfile.forEach((inputElement) => {
-    hideInputError(formProfile, inputElement, validationConfig);
-  })
+  formEditValidator.resetValidation();
 
   profileFormSubmitButton.classList.remove(validationConfig.inactiveButtonClass);
   profileFormSubmitButton.disabled = false;
@@ -59,30 +49,26 @@ function handleProfileFormSubmit (evt) {
     closePopup(popupEdit);
 }
 
-// Рендер карточек
-const renderCards = (cardData) => {
+const createCard = (cardData) => {
   const card = new Card(cardData);
-  cardsContainer.prepend(card.getView());
+  return card.getView();
+}
+
+// Рендер карточки
+const renderCard = (cardElement) => {
+  cardsContainer.prepend(createCard(cardElement));
 }
 
 // Добавление карточки
 const handleAddCard = (evt) => {
   evt.preventDefault();
-  renderCards({name: locateInput.value, link: imageInput.value});
+  renderCard({name: locateInput.value, link: imageInput.value});
 
   evt.target.reset();
   
   closePopup(popupAddCard);
  
-  disableSubmitButton(popupAddCard, validationConfig);
-}
-
-
-// Отключение кнопки попапа
-function disableSubmitButton(formElement, config) {
-    const buttonElement = formElement.querySelector('.popup__button');
-    buttonElement.classList.add(config.inactiveButtonClass);
-    buttonElement.disabled = true;
+  formCardValidator.resetValidation();
 }
 
 buttonAddCard.addEventListener('click', function() {
@@ -100,7 +86,7 @@ formAddElement.addEventListener('submit', handleAddCard);
 
 // Добавление карточек из массива
 initialCards.forEach((card) => {
-  renderCards(card);
+  renderCard(card);
 })
 
 // Закрытие попапов по нажатию на оверлей
@@ -118,11 +104,11 @@ formProfile.addEventListener('submit', handleProfileFormSubmit);
 buttonEditProfile.addEventListener('click', openEditProfile);
 
 
-const editFormModalWindow = document.querySelector('.popup_content_profile');
-const cardFormModalWindow = document.querySelector('.popup_content_card');
+const formEditModalWindow = document.querySelector('.popup_content_profile');
+const formCardModalWindow = document.querySelector('.popup_content_card');
 
-const editFormValidator = new FormValidator(validationConfig, editFormModalWindow);
-const cardFormValidator = new FormValidator(validationConfig, cardFormModalWindow);
+const formEditValidator = new FormValidator(validationConfig, formEditModalWindow);
+const formCardValidator = new FormValidator(validationConfig, formCardModalWindow);
 
-editFormValidator.enableValidation();
-cardFormValidator.enableValidation();
+formEditValidator.enableValidation();
+formCardValidator.enableValidation();
