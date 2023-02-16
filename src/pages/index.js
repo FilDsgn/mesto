@@ -1,13 +1,13 @@
-import '../page/index.css';
+import '../pages/index.css';
 
-import { initialCards } from './cards.js';
+import { initialCards } from '../utils/cards.js';
 
-import Card from "./Card.js";
-import Section from "./Section.js";
-import UserInfo from './UserInfo.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import FormValidator from "./FormValidator.js";
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
+import UserInfo from '../components/UserInfo.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import FormValidator from "../components/FormValidator.js";
 import { 
   validationConfig,
   buttonEditProfile,
@@ -23,16 +23,19 @@ import {
 const popupWithImage = new PopupWithImage('.popup_content_image');
 popupWithImage.setEventListeners();
 
+// Рендер карточки
+function renderCard(cardItem) {
+  const card = new Card(cardItem, '#card-item-template', () => {
+    popupWithImage.open(card.getCardInfo());
+  });
+  const cardElement = card.getView();
+  cardList.addItem(cardElement);
+}
+
 // Добавление карточек
 const cardList = new Section({
   items: initialCards,
-  renderer: (cardItem) => {
-    const card = new Card(cardItem, () => {
-      popupWithImage.open(card.getCardInfo());
-    });
-    const cardElement = card.getView();
-    cardList.addItem(cardElement);
-  }
+  renderer: renderCard
 }, cardListSelector);
 
 cardList.renderItems();
@@ -43,8 +46,8 @@ const userInfo = new UserInfo({nameSelector : '.profile__name', infoSelector: '.
 
 
 // Валидация форм
-const formEditModalWindow = document.querySelector('.popup_content_profile');
-const formCardModalWindow = document.querySelector('.popup_content_card');
+const formEditModalWindow = document.querySelector('.popup__form_profile');
+const formCardModalWindow = document.querySelector('.popup__form_card');
 
 const formEditValidator = new FormValidator(validationConfig, formEditModalWindow);
 const formCardValidator = new FormValidator(validationConfig, formCardModalWindow);
@@ -63,11 +66,7 @@ function handleSubmitAddCard() {
     link: imageInput.value
   }
 
-  const newCard = new Card(cardData, () => {
-      popupWithImage.open(newCard.getCardInfo());
-  })
-  const newCardElement = newCard.getView();
-  cardList.addItem(newCardElement);
+  renderCard(cardData);
 }
 
 buttonAddCard.addEventListener('click', () => {
@@ -87,11 +86,13 @@ function handleSubmitEditForm(value) {
 
 buttonEditProfile.addEventListener('click', () => {
   
-  nameInput.value = userInfo.getUserInfo().name;
-  jobInput.value = userInfo.getUserInfo().about;
+  const {name, about} = userInfo.getUserInfo()
+
+  nameInput.value = name;
+  jobInput.value = about;
+
 
   popupEditProfile.open();
   formEditValidator.resetValidation();
-  console.log(userInfo.getUserInfo())
 });
 

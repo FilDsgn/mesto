@@ -1,15 +1,15 @@
 
 
 class Card {
-  constructor({ name, link }, handleCardClick) {
+  constructor({ name, link }, templateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
+    this._template = document.querySelector(templateSelector);
     this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
-    const card = document
-    .querySelector('#card-item-template')
+    const card = this._template
     .content.querySelector('.element')
     .cloneNode(true);
 
@@ -27,6 +27,8 @@ class Card {
   _deleteCard() {
     this._newCard.remove();
     this._newCard = null;
+    this._imageElement = null;
+    this._buttonLike = null;
   }
 
   _likeCard() {

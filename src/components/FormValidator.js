@@ -5,9 +5,6 @@ class FormValidator {
     this._formElement = formElement;
     this._buttonSubmit = this._formElement.querySelector(this._config.submitButtonSelector);
     this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
-
-    this._errorClass = this._config.errorClass;
-    this._inputErrorClass = this._config.inputErrorClass;
   }
 
 
@@ -15,18 +12,18 @@ class FormValidator {
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
 
-    errorElement.classList.add(this._errorClass);
+    errorElement.classList.add(this._config.errorClass);
     errorElement.textContent = errorMessage;
-    inputElement.classList.add(this._inputErrorClass);
+    inputElement.classList.add(this._config.inputErrorClass);
   }
 
   // Скрыть ошибку
   _hideInputError(inputElement) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
 
-    errorElement.classList.remove(this._errorClass);
+    errorElement.classList.remove(this._config.errorClass);
     errorElement.textContent = '';
-    inputElement.classList.remove(this._inputErrorClass);
+    inputElement.classList.remove(this._config.inputErrorClass);
   }
 
   // Проверка валидности
