@@ -1,3 +1,5 @@
+import '../page/index.css';
+
 import { initialCards } from './cards.js';
 
 import Card from "./Card.js";
