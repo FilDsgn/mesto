@@ -1,9 +1,10 @@
-import { handleImageClick } from '../utils/utils.js';
+
 
 class Card {
-  constructor({ name, link }) {
+  constructor({ name, link }, handleCardClick) {
     this._name = name;
     this._link = link;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -43,8 +44,12 @@ class Card {
     })
 
     this._imageElement.addEventListener('click', () => {
-      handleImageClick(this._name, this._link);
+      this._handleCardClick();
     })
+  }
+
+  getCardInfo() {
+    return { name: this._name, link: this._link }
   }
   
 
@@ -52,6 +57,9 @@ class Card {
     this._newCard = this._getTemplate();
 
     this._imageElement = this._newCard.querySelector('.element__image');
+    this._imageElement.src = this._link;
+    this._imageElement.alt = this._name;
+
     this._buttonLike = this._newCard.querySelector('.element__like');
 
     this._setData();
