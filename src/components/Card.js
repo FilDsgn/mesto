@@ -46,11 +46,11 @@ class Card {
     })
 
     this._imageElement.addEventListener('click', () => {
-      this._handleCardClick();
+      this._handleCardClick(this._getCardInfo());
     })
   }
 
-  getCardInfo() {
+  _getCardInfo() {
     return { name: this._name, link: this._link }
   }
   

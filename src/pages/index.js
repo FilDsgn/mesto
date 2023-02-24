@@ -25,8 +25,8 @@ popupWithImage.setEventListeners();
 
 // Рендер карточки
 function renderCard(cardItem) {
-  const card = new Card(cardItem, '#card-item-template', () => {
-    popupWithImage.open(card.getCardInfo());
+  const card = new Card(cardItem, '#card-item-template', (cardInfo) => {
+    popupWithImage.open(cardInfo);
   });
   const cardElement = card.getView();
   cardList.addItem(cardElement);
