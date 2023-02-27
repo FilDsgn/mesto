@@ -20,11 +20,10 @@ import {
   jobInput,
   cardListSelector
  } from '../utils/utils.js';
-
-
+ 
 const api = new Api(apiConfig);
 api.getCardList().then((cards) => {
-  cards.map((card) => ({ name: card.name, link: card.link })).forEach(renderCard);
+  cards.map((card) => ({ name: card.name, link: card.link })).forEach(renderCard)
 })
 
 // Попап с фото
@@ -80,6 +79,10 @@ function handleSubmitAddCard() {
       link: card.link
       })
     })
+
+  
+
+  // renderCard(cardData);
 }
 
 buttonAddCard.addEventListener('click', () => {

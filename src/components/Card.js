@@ -1,11 +1,14 @@
 
 
 class Card {
-  constructor({ name, link }, templateSelector, handleCardClick) {
+  constructor({ name, link, id }, templateSelector, handleCardClick, deleteHandler, likeHandler) {
     this._name = name;
     this._link = link;
+    this._id = id;
     this._template = document.querySelector(templateSelector);
     this._handleCardClick = handleCardClick;
+    this._deleteHandler = deleteHandler;
+    this._likeHandler = likeHandler;
   }
 
   _getTemplate() {
@@ -24,11 +27,12 @@ class Card {
     this._imageElement.alt = this._name;
   }
 
-  _deleteCard() {
-    this._newCard.remove();
-    this._newCard = null;
-    this._imageElement = null;
-    this._buttonLike = null;
+  _deleteCard(id) {
+    // this._newCard.remove();
+    this._deleteHandler(this);
+    // this._newCard = null;
+    // this._imageElement = null;
+    // this._buttonLike = null;
   }
 
   _likeCard() {

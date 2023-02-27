@@ -26,9 +26,18 @@ const validationConfig = {
   errorClass: 'popup__error_visible'
 }
 
+const apiConfig = {
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-60',
+  headers: {
+    Authorization: '594f53a9-2ef4-460f-805e-a78ca111123b',
+    'Content-Type': 'application/json'
+  }
+}
+
 
 export { 
   validationConfig,
+  apiConfig,
   buttonEditProfile,
   buttonAddCard,
   popups,

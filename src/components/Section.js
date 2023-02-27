@@ -7,8 +7,22 @@ export default class Section {
   }
 
   renderItems() {
+    this._renderedItems.reverse();
     this._renderedItems.forEach(this._renderer);
   }
+
+  _clear() {
+    this._container.innerHTML = '';
+  }
+
+  // renderItems(items) {
+  //   this._clear();
+  //   items.reverse();
+  //   items.forEach((item) => {
+  //     this.addItem(item)
+  //   })
+
+  // }
 
   addItem(element) {
     this._container.prepend(element);

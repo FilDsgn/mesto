@@ -21,7 +21,10 @@
 
     <!-- Profile -->
     <section class="profile">
-      <div class="profile__avatar"></div>
+      <div class="profile__avatar-wrapper">
+        <div class="profile__avatar"></div>
+      </div>
+
       <div class="profile__info">
         <div class="profile__wrapper">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -71,6 +74,20 @@
     </div>
   </div>
 
+  <!-- Pop-up update avatar-->
+  <div class="popup popup_update_avatar">
+    <div class="popup__container">
+      <form action="#" name="profile-form" class="popup__form popup__form_update_avatar" novalidate>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <input name="about" type="url" placeholder="Ссылка на картинку" id="image-link"
+          class="popup__input popup__input_place_image" required>
+        <span class="image-link-error popup__input-error"></span>
+        <button type="submit" aria-label="Сохранить" class="popup__button">Сохранить</button>
+      </form>
+      <button type="button" class="popup__close-button"></button>
+    </div>
+  </div>
+
   <!-- Pop-up card-->
   <div class="popup popup_content_card">
     <div class="popup__container">
@@ -83,6 +100,17 @@
           class="popup__input popup__input_place_image" required>
         <span class="image-link-error popup__input-error"></span>
         <button type="submit" aria-label="Сохранить" class="popup__button">Сохранить</button>
+      </form>
+      <button type="button" class="popup__close-button"></button>
+    </div>
+  </div>
+
+  <!-- Pop-up confirm -->
+  <div class="popup popup_confirm">
+    <div class="popup__container">
+      <form action="#" name="profile-form" class="popup__form popup__form_card" novalidate>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button type="submit" aria-label="Сохранить" class="popup__button">Да</button>
       </form>
       <button type="button" class="popup__close-button"></button>
     </div>
