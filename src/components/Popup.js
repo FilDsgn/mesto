@@ -2,6 +2,8 @@ export default class Popup {
   constructor(selector) {
     this._popup = document.querySelector(selector);
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._button = this._popup.querySelector('.popup__button');
+    this._buttonClose = this._popup.querySelector('.popup__close-button');
   }
 
   open() {
@@ -20,10 +22,14 @@ export default class Popup {
     }
   }
 
+  setButtonText(text) {
+    this._button.textContent = text;
+  }
+
   setEventListeners() {
+    
     // Закрытие попапа по нажатию на иконку
-    const buttonClose = this._popup.querySelector('.popup__close-button');
-    buttonClose.addEventListener('click', () => {
+    this._buttonClose.addEventListener('click', () => {
       this.close();
     })
 
@@ -33,7 +39,6 @@ export default class Popup {
         this.close();
       }
     })
-
   }
 
 }

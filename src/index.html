@@ -22,15 +22,16 @@
     <!-- Profile -->
     <section class="profile">
       <div class="profile__avatar-wrapper">
-        <div class="profile__avatar"></div>
+        <!-- <div class="profile__avatar"></div> -->
+        <img src="" alt="Аватар профиля" class="profile__avatar">
       </div>
 
       <div class="profile__info">
         <div class="profile__wrapper">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button type="button" aria-label="Редактировать профиль" class="profile__edit-button"></button>
         </div>
-        <p class="profile__work">Исследователь океана</p>
+        <p class="profile__work"></p>
       </div>
       <button type="button" aria-label="Добавть карточку" class="profile__add-button"></button>
     </section>
@@ -44,7 +45,11 @@
             <img src="#" alt="" class="element__image">
             <div class="element__wrapper">
               <h2 class="element__title"></h2>
-              <button type="button" aria-label="Поставить лайк" class="element__like"></button>
+              <div class="element__like-container">
+                <button type="button" aria-label="Поставить лайк" class="element__like"></button>
+                <p class="element__like-counter element__like-counter_active"></p>
+              </div>
+
             </div>
           </article>
         </template>
@@ -79,7 +84,7 @@
     <div class="popup__container">
       <form action="#" name="profile-form" class="popup__form popup__form_update_avatar" novalidate>
         <h2 class="popup__title">Обновить аватар</h2>
-        <input name="about" type="url" placeholder="Ссылка на картинку" id="image-link"
+        <input name="avatar" type="url" placeholder="Ссылка на картинку" id="image-link"
           class="popup__input popup__input_place_image" required>
         <span class="image-link-error popup__input-error"></span>
         <button type="submit" aria-label="Сохранить" class="popup__button">Сохранить</button>

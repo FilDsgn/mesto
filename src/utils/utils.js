@@ -6,6 +6,7 @@ const popupAddCard = document.querySelector('.popup_content_card');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const profileName = document.querySelector('.profile__name');
 const profileWork = document.querySelector('.profile__work');
+const profileAvatar = document.querySelector('.profile__avatar');
 const formAddElement = popupAddCard.querySelector('.popup__form'); 
 const locateInput = formAddElement.querySelector('.popup__input_place_locate');
 const imageInput = formAddElement.querySelector('.popup__input_place_image');
@@ -46,6 +47,7 @@ export {
   closeButtons,
   profileName,
   profileWork,
+  profileAvatar,
   formAddElement,
   locateInput,
   imageInput,
