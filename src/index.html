@@ -23,7 +23,7 @@
     <section class="profile">
       <div class="profile__avatar-wrapper">
         <!-- <div class="profile__avatar"></div> -->
-        <img src="" alt="Аватар профиля" class="profile__avatar">
+        <img src="<%=require('./images/profile-avatar.jpg')%>" alt="Аватар профиля" class="profile__avatar">
       </div>
 
       <div class="profile__info">
@@ -101,9 +101,9 @@
         <input name="name" type="text" placeholder="Название" minlength="2" maxlength="30" required id="locate-name"
           class="popup__input popup__input_place_locate">
         <span class="locate-name-error popup__input-error"></span>
-        <input name="about" type="url" placeholder="Ссылка на картинку" id="image-link"
+        <input name="about" type="url" placeholder="Ссылка на картинку" id="avatar-link"
           class="popup__input popup__input_place_image" required>
-        <span class="image-link-error popup__input-error"></span>
+        <span class="avatar-link-error popup__input-error"></span>
         <button type="submit" aria-label="Сохранить" class="popup__button">Сохранить</button>
       </form>
       <button type="button" class="popup__close-button"></button>
