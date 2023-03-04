@@ -14,35 +14,12 @@ export default class UserInfo {
     }
   }
 
-  setUserInfo(data) {
-    this._userName.textContent = data.name;
-    this._userAbout.textContent = data.about;
+  setUserInfo({ name, about }) {
+    this._userName.textContent = name;
+    this._userAbout.textContent = about;
   }
 
   setUserAvatar(data) {
     this._userAvatar.src = data.avatar;
   }
 }
-
-
-
-
-
-// export default class UserInfo {
-//   constructor({ nameSelector, infoSelector }) {
-//     this._userName = document.querySelector(nameSelector);
-//     this._userInfo = document.querySelector(infoSelector);
-//   }
-
-//   getUserInfo() {
-//     return {
-//       name: this._userName.textContent,
-//       about: this._userInfo.textContent
-//     }
-//   }
-
-//   setUserInfo({ name, about }) {
-//     this._userName.textContent = name;
-//     this._userInfo.textContent = about;
-//   }
-// }

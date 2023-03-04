@@ -66,6 +66,12 @@ export default class Card {
     this._likeCounter.textContent = this._likes.length;
   }
 
+  updateLikes(likes) {
+    this.getLikes(likes);
+    this.toggleButtonLike();
+    this.toggleValueLike();
+    this.toggleVisibleLikeCounter()
+  }
 
   toggleButtonLike() {
     this._buttonLike.classList.toggle('element__like_active');
